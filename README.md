@@ -1,1 +1,1 @@
-Esimerkki tiedoston muokkaamisesta! Revert esimerkki!
+Esimerkki tiedoston muokkaamisesta!
