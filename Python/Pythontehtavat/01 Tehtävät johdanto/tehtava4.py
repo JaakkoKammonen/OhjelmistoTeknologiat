@@ -1,0 +1,7 @@
+thing = input("Anna teksti: ")
+lenght = len(thing)
+print("Pituus: " + str(lenght))
+print("Ensimmäinen kirjain: " + thing[0])
+print("Viimeinen kirjain: " + thing[-1])
+print("Kolmannesta merkistä eteenpäin: " + thing[3:])
+print("Joka toinen kirjain: " + thing [::2])
