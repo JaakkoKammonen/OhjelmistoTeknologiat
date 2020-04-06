@@ -1,0 +1,14 @@
+{
+  "name": "01-moduulit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^25.2.4"
+  }
+}
