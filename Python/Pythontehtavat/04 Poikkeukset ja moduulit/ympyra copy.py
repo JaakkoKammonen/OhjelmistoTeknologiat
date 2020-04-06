@@ -31,14 +31,14 @@ class Circle:
         self.y = self.y + j
     
 def create_circle(tuotuympyrä):
-    circle= plt.Circle((tuotuympyrä.x,tuotuympyrä.y),radius=tuotuympyrä.r)
+    circle= plt.Circle((tuotuympyrä.x,tuotuympyrä.y),radius=tuotuympyrä.r, facecolor='none', edgecolor ='b')
     return circle
 
 def show_shape(a,c,b):
     ax= plt.gca()
-    ax.add_patch(a.plottable())
-    ax.add_patch(b.plottable())
-    ax.add_patch(c.plottable())
+    ax.add_patch(a)
+    ax.add_patch(b)
+    ax.add_patch(c)
     plt.axis('scaled')
     plt.show()
 
@@ -47,13 +47,6 @@ def render(ympyra):
     b=create_circle(ympyra[1]) 
     c=create_circle(ympyra[2])
     show_shape(a,b,c)
-
-## Koitettu myös show_shape(a,b,c)
-    ##ax= plt.subplots()
-	##ax.add_patch(a,b,c)
-	##plt.axis('scaled')
-	##plt.show() 
-## Yhden saa aina, mutta ei montaa...
 
 a = Circle(5, 5, 2)
 b = Circle(-2, 2, 1)
