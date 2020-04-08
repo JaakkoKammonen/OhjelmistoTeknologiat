@@ -8,31 +8,20 @@
 const tulostus = require('./tulostus');
 
 
+
 const tulostNelio = (sivu) => {
-  for(i = 0; i < sivu; i++){
+  for(let i = 0; i < sivu; i++){
       tulostus.tulostaTahtia(sivu)
   }   
 }
 const tulostaSuorakulmio = (x,y) => {
-    for(i = 0; i < y; i++){
+    for(let i = 0; i < y; i++){
         tulostus.tulostaTahtia(x)
     }
 }
-const tulostax = (x) => {
-    for (let i = 0; i < x; i++) {
-        let str = '';
-        for (let j = 1; j < x-i; j++) {
-          str = str + ' ';
-        }
-        for (let k = 1; k <= (2*i+1); k++) {
-          str = str + '*';
-        }
-        console.log(str);
-      }
 
-}
 const tulostaKolmio = (x) => {
-    for(i = 1; i < x; i++){
+    for(let i = 1; i <= x; i++){
         tulostus.tulostaTahtia(i)
     }
 }
@@ -49,13 +38,12 @@ const kertoma = (x) => {
     tulostus.tulostaTulos(parsed);
 }
 
-/*
+
 kertoma(20);
 lukusarjanSumma(100);     
 tulostNelio(10);
 tulostaSuorakulmio(5,3);
 tulostaKolmio(3);
-tulostax(4);*/
 
 
 module.exports = {
@@ -64,5 +52,5 @@ lukusarjanSumma,
 tulostNelio,
 tulostaSuorakulmio,
 tulostaKolmio,
-tulostax,
+
   }

@@ -12,7 +12,6 @@ const tulostaTulos = (inp) => {
   for (i = 0; i < parsed.length; i++){
     process.stdout.write("-")
   }
-
   console.log("");
   console.log(parsed);
 
