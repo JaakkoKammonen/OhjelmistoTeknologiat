@@ -1,12 +1,14 @@
 const express = require('express');
 const cors = require('cors')
 const app = express();
-const path = require('path');
 const port = 3000;
 
 app.use(express.urlencoded())
-app.use('/', express.static('./web-client/public'))
+app.use(cors());
+app.use('/', express.static('./web-client/public'));
+app.use('/hello', express.static('./hello'));
 app.use(express.json())
+
 
 app.get('/api/exercise', (req, res) =>{
     res.statusCode = 200
@@ -19,7 +21,18 @@ port ${port}!`))
 
 app.post('/api/exercise', function (req, res) {
     res.statusCode = 200
-    res.send('Got a POST request') //yritetty ties kuinka kauan...
+    const params = req.body;
+    let response = '<h1>Hello from Express!</h1>' +
+    '<h2>POST parameters</h2>'+
+    '<p>I received these parameters: </p>'+
+    '<ul>';
+
+    for (let i in params) {
+        response += '<li> ${i}: ${params[i]}'
+    }
+     
+    response += '</ul>' 
+    res.send(response) //yritetty ties kuinka kauan...
     });
 
 app.post('/api/login', (req, res) =>{  
@@ -35,13 +48,11 @@ app.post('/api/login', (req, res) =>{
             ))
     } else {
         res.statusCode = 403;
+        res.send();
     }
     
     });
 
-app.get('/api', cors(), (req, res, next) => {
+app.get('/api', (req, res) => {
     res.json({ msg: 'Hello, World!' })
-    });
-app.get('/hello', cors(), (req, res, next) => {
-    res.sendfile('./hello')
     });
