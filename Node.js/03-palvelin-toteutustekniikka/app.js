@@ -6,25 +6,33 @@ const port = 3000;
 const validateQuery = require('./validateQuery');
 const errorHandler = require('./error_handler');
 const fetch = require("node-fetch");
+const parser = require('./parser');
+
+const url = "https://www.ilmatieteenlaitos.fi/observationdata?station=101004 ";
 
 app.use(morgan('dev'));
 
-app.use(errorHandler);
+const makeReq = async url => {
+    const res = await fetch(url); 
+    const data = await res.json();
 
-app.get('/weather', errorHandler,(req,res, next) => {
-    console.log(res.statusCode)
+    return data;
+};
+
+app.get('/weather', validateQuery.validateQuery, async (req,res, next) => {
     
-    if (req.statusCode===200){
-        res.statusCode==500
-        next();
-    }
+    const oblista = req.query.observation;
     
-      else {
-        res.status(200).send(req.query)
+    try {
+        const data = await makeReq(url);
+        const observation = parser.parseData(data, oblista);
+        res.send(observation);
+    } catch (e) {
+        console.log(e);
     }
 });
 
-
+app.use(errorHandler);
 
 app.listen(port, () =>
 console.log(`Example app listening on
